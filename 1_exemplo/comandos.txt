@@ -1,1 +1,5 @@
 npm init -y
+node ./app.js
+
+https://www.youtube.com/watch?v=qSfoczpQifc
+
