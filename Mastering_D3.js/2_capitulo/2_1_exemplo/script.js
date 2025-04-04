@@ -19,3 +19,14 @@ d3.select('#chart').selectAll('div.data-item')
 .attr('class', 'data-item')
 .append('p')
 .html(function(d) { return d; });
+
+d3.select('#chart1').selectAll('div.data-item')
+.data(data)
+.enter()
+.append('div')
+.attr('class', 'data-item')
+.call(function(selection) {
+selection.each(function(d) {
+d3.select(this).append('p').html(d);
+});
+});
