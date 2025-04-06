@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<header>
+  <link rel="stylesheet" href="style.css">
+</header>
+
+
+<body>
+
+ <div id="canvas-force" ></div>
+
+
+</body>
+
+<script>
+  // Graphic Variables
+  var barw = 65,
+  barh = 60;
+  // Append a canvas element, set its size and get the node.
+  var canvas = document.getElementById('canvas-demo');
+  // Get the rendering context.
+  var context = canvas.getContext('2d');
+  // Array with colors, to have one rectangle of each color.
+  var color = ['#5c3566', '#6c475b', '#7c584f', '#8c6a44', '#9c7c39',
+  '#ad8d2d', '#bd9f22', '#cdb117', '#ddc20b', '#edd400'];
+  // Set the fill color and render ten rectangles.
+  for (var k = 0; k < 10; k += 1) {
+  // Set the fill color.
+    context.fillStyle = color[k];
+  // Create a rectangle in incremental positions.
+    context.fillRect(k * barw, 0, barw, barh);
+  }
+  </script>
+
+</html>

@@ -1,0 +1,73 @@
+// Number of Nodes
+var nNodes = 250,
+createLink = false;
+// Dataset Structure
+var data = {nodes: [],links: []};
+
+// Iterate in the nodes
+for (var k = 0; k < nNodes; k += 1) {
+    // Create a node with a random radius.
+    data.nodes.push({radius: (Math.random() > 0.3) ? 2 : 4});
+    // Create random links between the nodes.
+    }
+
+
+// Create random links between the nodes.
+for (var j = k + 1; j < nNodes; j += 1) {
+    // Create a link with probability 0.1
+    createLink = (Math.random() < 0.1) && (Math.abs(k - j) < 8);
+    if (createLink) {
+    // Append a link with variable distance between the nodes
+    data.links.push({
+    source: k,
+    target: j,
+    dist: 2 * Math.abs(k - j) + 10
+    });
+    }
+    }
+
+
+// Figure width and height
+var width = 650,
+height = 300;
+
+var force = d3.layout.force()
+.size([width, height])
+.nodes(data.nodes)
+.links(data.links)
+.charge(function(d) { return -1.2 * d.radius * d.radius; })
+.linkDistance(function(d) { return d.dist; })
+.start();
+
+// Create a canvas element and set its size.
+var canvas = d3.select('div#canvas-force').append('canvas')
+.attr('width', width + 'px')
+.attr('height', height + 'px')
+.node();
+
+
+// Get the canvas context.
+var context = canvas.getContext('2d');
+
+force.on('tick', function() {
+    // Clear the complete figure.
+    context.clearRect(0, 0, width, height);
+    // Draw the links
+    data.links.forEach(function(d) {
+    // Draw a line from source to target.
+    context.beginPath();
+    context.moveTo(d.source.x, d.source.y);
+    context.lineTo(d.target.x, d.target.y);
+    context.stroke();
+    });
+
+    // Draw the nodes
+    data.nodes.forEach(function(d, i) {
+    // Draws a complete arc for each node.
+    context.beginPath();
+    context.arc(d.x, d.y, d.radius, 0, 2 * Math.PI, true);
+    context.fill();
+    });
+
+    });
+
