@@ -1,0 +1,20 @@
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<script>
+    // Load the data asynchronously.
+    d3.json('browsers.json', function(error, data) {
+    // Handle errors getting or parsing the JSON data.
+    if (error) {
+    console.error('Error accessing or parsing the JSON file.');
+    return error;
+    }
+    // Access the data items.
+    var items = data.values;
+    // Sort the items by decreasing usage.
+    items.sort(function(a, b) { return b.usage-a.usage; });
+
+    });
+
+  
+
+    </script>
