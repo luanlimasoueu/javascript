@@ -1,0 +1,18 @@
+body {
+    background-color: linen;
+    font-family: sans-serif;
+  }
+   
+  .bar > rect {
+    stroke: black;
+    stroke-width: 1;
+  }
+   
+  .bar > text {
+    fill: white;
+    text-anchor: middle; /* horizontally centers */
+  }
+   
+  #chart {
+    background-color: white;
+  }

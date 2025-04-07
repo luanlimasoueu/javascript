@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>D3 Selections</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+  </head>
+  <body>
+    <div class="chart" id="chart1">
+      <div class="bar">Bar #1</div>
+      <div class="bar">Bar #2</div>
+      <div class="bar">Bar #3</div>
+    </div>
+ 
+    <div class="chart" id="chart2">
+      <div class="bar">Bar #4</div>
+      <div class="bar">Bar #5</div>
+    </div>
+ 
+    <script>
+      // Select all elements with a CSS class of "bar".
+      const bars1 = d3.selectAll('.bar');
+      console.log('bars1 =', bars1);
+ 
+      // Select all elements with a CSS class of "bar" that are
+      // descendants of the element with an id of "chart1".
+      const chart1 = d3.select('#chart1');
+      const bars2 = chart1.selectAll('.bar');
+      console.log('bars2 =', bars2);
+ 
+      // Select all elements with a CSS class of "bar" that are
+      // descendants of any element with a CSS class of "chart".
+      const charts = d3.selectAll('.chart');
+      const bars3 = charts.selectAll('.bar');
+      console.log('bars3 =', bars3);
+    </script>
+  </body>
+</html>

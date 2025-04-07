@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title>D3 data method</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+  </head>
+  <body>
+    <button onclick="update()">Update</button>
+ 
+    <div id="chart"></div>
+ 
+    <script>
+      // Gets a random integer between 1 and max inclusive.
+      const randomInt = max => Math.floor(Math.random() * max) + 1;
+ 
+      // Generates an array containing a random number of random integers.
+      function getValues() {
+        const count = randomInt(7);
+        const values = [];
+        for (let i = 0; i < count; i++) {
+          values.push(randomInt(10));
+        }
+        return values;
+      }
+ 
+      function update() {
+        const values = getValues();
+        console.log('values =', values);
+ 
+        // Create a D3 selection representing the bars
+        // which are div elements with a CSS class of "bar",
+        // and associate data values with them.
+        const bars = d3.select('#chart').selectAll('.bar').data(values);
+ 
+        // Update the text of bar elements that are already in the DOM.
+        bars.text(d => 'update ' + d);
+ 
+        // Create new bar elements that need to enter the DOM
+        // and set their text.
+        bars
+          .enter()
+          .append('div')
+          .attr('class', 'bar')
+          .text(d => 'enter ' + d);
+ 
+        // Remove bar elements that need to exit the DOM.
+        bars.exit().remove();
+      }
+ 
+      update(); // initial call
+    </script>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <title>D3 data method</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+  </head>
+  <body>
+    <div class="bar"></div>
+    
+    <script>
+      const values = [7, 13, 2];
+      const bars = d3.selectAll('.bar').data(values);
+      console.log('bars =', bars);
+    </script>
+  </body>
+</html>
